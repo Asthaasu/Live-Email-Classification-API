@@ -5,3 +5,5 @@ pandas
 scikit-learn
 mlflow
 xgboost
+streamlit
+shap
