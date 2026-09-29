@@ -541,38 +541,5 @@ Docker
 GitHub Actions
 ```
 
-An end-to-end machine learning project for building an explainable spam email detection system.
-
-````
-
-### Then update GitHub
-
-From your project folder:
-
-```bash
-cd /Users/asthapankaj/spam-detector
-````
-
-Open README:
-
-```bash
-nano README.md
-```
-
-**Delete everything** in the file and paste the complete README above.
-
-Save:
-
-```text
-Ctrl + O
-Enter
-Ctrl + X
-```
-
-Then run:
-
-```bash
-git add README.md
-git commit -m "Update project README"
-git push origin main
+origin main
 ```
