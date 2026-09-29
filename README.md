@@ -1,4 +1,4 @@
-# Spam-email-detection
+# Live Email Classification API
 
 Machine Learning based spam email detection system using Naive Bayes and TF-IDF vectorization.
 
