@@ -540,6 +540,3 @@ Docker
     +
 GitHub Actions
 ```
-
-origin main
-```
