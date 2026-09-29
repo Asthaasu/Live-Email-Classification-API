@@ -3,3 +3,5 @@ uvicorn[standard]
 numpy
 pandas
 scikit-learn
+mlflow
+xgboost

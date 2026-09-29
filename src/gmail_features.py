@@ -127,7 +127,7 @@ def prepare_training_data(dataset_path=DATASET_PATH):
     scaler = StandardScaler()
     X_scaled = scaler.fit_transform(features_df)
 
-    return X_scaled, y, features_df.columns
+    return X_scaled, y, features_df.columns, scaler
 
 
 if __name__ == "__main__":

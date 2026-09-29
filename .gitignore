@@ -9,3 +9,15 @@ src/credentials.json
 .venv/
 venv/
 env/
+# macOS
+.DS_Store
+**/.DS_Store
+
+# MLflow
+mlruns/
+mlflow.db
+
+# Local Gmail datasets
+data/gmail_dataset.csv
+data/gmail_features_dataset.csv
+data/gmail_labeled_dataset.csv

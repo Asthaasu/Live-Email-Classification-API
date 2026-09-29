@@ -1,0 +1,41 @@
+name: Weekly Retrain
+
+on:
+  schedule:
+    - cron: '0 2 * * 0'   # Every Sunday, 2 AM UTC
+  workflow_dispatch: {}     # lets you trigger it manually from the Actions tab
+
+jobs:
+  retrain:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore Gmail credentials
+        env:
+          GMAIL_TOKEN_B64: ${{ secrets.GMAIL_TOKEN_B64 }}
+          GMAIL_CREDENTIALS: ${{ secrets.GMAIL_CREDENTIALS }}
+        run: |
+          echo "$GMAIL_CREDENTIALS" > credentials.json
+          echo "$GMAIL_TOKEN_B64" | base64 -d > token.pickle
+
+      - name: Fetch new Gmail data
+        run: python src/fetch_gmail_dataset.py
+
+      - name: Retrain model with MLflow tracking
+        run: python src/train_gmail_model.py
+
+      - name: Commit updated model + data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git add model/ data/
+          git commit -m "Auto: weekly retrain $(date +'%Y-%m-%d')" || echo "No changes to commit"
+          git push
